@@ -1,10 +1,12 @@
 <resources>
-    <string name="app_name">Density</string>
+    <string name="app_name">Расчет плотности</string>
     <string name="input_pressure">Введите пластовое давление:</string>
     <string name="input_height">Введите глубину по вертикали:</string>
     <string name="warn_pressure1">Пожалуйста, внимательно проверьте размерность давления. Помните, что:</string>
     <string name="warn_pressure2">1 Атм = 0.101325 Мпа</string>
+    <string name="res_str">г/см&#179;</string>
     <string name="height_unit">м.</string>
+    <string name="btn_start">Старт</string>
     <string-array name="pressure_unit">
         <item>Атм</item>
         <item>МПа</item>
