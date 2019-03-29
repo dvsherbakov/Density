@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             if (safetySp==0) res *= 1.03;
             if (safetySp==1) res *= 1.05;
             if (safetySp==2) res *= 1.07;
-            if (safetySp==4) res *= 1.1;
+            if (safetySp==3) res *= 1.1;
             if (res < 1.0) res = 1.00;
             mResText.setText(Html.fromHtml(df2.format(res) + " г/см<sup><small>3</small></sup>"));
         }
