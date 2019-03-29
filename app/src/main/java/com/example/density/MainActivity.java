@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.Button;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private Double dPressure;
     private Double dHeight;
     private Spinner mUnitSpinner;
+    private Spinner mSafetySpinner;
     private final Double gr;
     private static DecimalFormat df2 = new DecimalFormat("#.####");
 
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         mEditTextHeight = findViewById(R.id.inp_height);
         mStartButton = findViewById(R.id.btn_start_result);
         mUnitSpinner = findViewById(R.id.sp_unit);
+        mSafetySpinner = findViewById(R.id.sp_safety);
         mStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +61,26 @@ public class MainActivity extends AppCompatActivity {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             public void onTextChanged(CharSequence s, int start, int before, int count) {}
         });
+        mUnitSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                Encount();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                Encount();
+            }
+        });
+        mSafetySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                Encount();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                Encount();
+            }
+        });
     }
 
     protected void Encount(){
@@ -72,6 +95,11 @@ public class MainActivity extends AppCompatActivity {
             if (sp == 0) dPressure = dPressure * 101325;
             else dPressure = dPressure * 1000000;
             Double res = dPressure / (gr * dHeight * 1000);
+            Integer safetySp = mSafetySpinner.getSelectedItemPosition();
+            if (safetySp==0) res *= 1.03;
+            if (safetySp==1) res *= 1.05;
+            if (safetySp==2) res *= 1.07;
+            if (safetySp==4) res *= 1.1;
             if (res < 1.0) res = 1.00;
             mResText.setText(Html.fromHtml(df2.format(res) + " г/см<sup><small>3</small></sup>"));
         }

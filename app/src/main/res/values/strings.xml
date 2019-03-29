@@ -11,4 +11,11 @@
         <item>Атм</item>
         <item>МПа</item>
     </string-array>
+    <string-array name="safety_list">
+        <item>3%</item>
+        <item>5%</item>
+        <item>7%</item>
+        <item>10%</item>
+    </string-array>
+    <string name="input_safety">Коэф. безопасности</string>
 </resources>
