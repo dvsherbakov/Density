@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             mResText.setText(0 + "");
         else {
             Integer sp = mUnitSpinner.getSelectedItemPosition();
-            if (sp == 0) dPressure = dPressure * 101325;
+            if (sp == 0) dPressure = dPressure * 101325.6;
             else dPressure = dPressure * 1000000;
             Double res = dPressure / (gr * dHeight * 1000);
             Integer safetySp = mSafetySpinner.getSelectedItemPosition();
@@ -100,8 +100,9 @@ public class MainActivity extends AppCompatActivity {
             if (safetySp==1) res *= 1.05;
             if (safetySp==2) res *= 1.07;
             if (safetySp==3) res *= 1.1;
-            if (res < 1.0) res = 1.00;
-            mResText.setText(Html.fromHtml(df2.format(res) + " г/см<sup><small>3</small></sup>"));
+            Integer mRes = ((int) Math.ceil(res*100))*10;
+            if (mRes < 1000) mRes = 1000;
+            mResText.setText(Html.fromHtml(mRes.toString() + " г/см<sup><small>3</small></sup>"));
         }
     }
 }
