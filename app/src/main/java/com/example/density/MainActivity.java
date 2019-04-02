@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private Spinner mUnitSpinner;
     private Spinner mSafetySpinner;
     private final Double gr;
-    private static DecimalFormat df2 = new DecimalFormat("#.####");
 
     public MainActivity() {
         gr = 9.81;
@@ -102,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             if (safetySp==3) res *= 1.1;
             Integer mRes = ((int) Math.ceil(res*100))*10;
             if (mRes < 1000) mRes = 1000;
-            mResText.setText(Html.fromHtml(mRes.toString() + " г/см<sup><small>3</small></sup>"));
+            mResText.setText(Html.fromHtml(mRes.toString() + " кг/м<sup><small>3</small></sup>"));
         }
     }
 }
