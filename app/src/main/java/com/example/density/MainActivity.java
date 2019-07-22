@@ -100,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
             if (safetySp==2) res *= 1.07;
             if (safetySp==3) res *= 1.1;
             Integer mRes = ((int) Math.ceil(res*100))*10;
-            if (mRes < 1000) mRes = 1000;
             mResText.setText(Html.fromHtml(mRes.toString() + " кг/м<sup><small>3</small></sup>"));
         }
     }
